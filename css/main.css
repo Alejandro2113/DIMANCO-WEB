@@ -47,6 +47,9 @@ header {
   position: fixed;
   background-color: rgba(250, 250, 250, 0.7);
 }
+header ul li ahover {
+  background-color: rgb(244, 211, 45);
+}
 header .list-h a {
   text-decoration: none;
   display: flex;
@@ -57,21 +60,22 @@ header .list-h a {
   font-weight: 500;
   margin: 15px;
 }
-header ul li a {
-  list-style-type: none;
-}
 header ul {
   display: flex;
   flex-direction: row;
   align-items: center;
   list-style-type: none;
 }
-header ul li:hover {
+header ul li a {
+  list-style-type: none;
+}
+header ul li a:hover {
   background-color: rgb(244, 211, 45);
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   padding: 12px;
+  color: black;
 }
 header .logoheader {
   z-index: 1000;
@@ -79,6 +83,40 @@ header .logoheader {
   width: 145px;
   justify-content: left;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 1020px) {
+  .hamburger,
+  .toggle-menu {
+    display: block;
+  }
+  .logDimanco ul a {
+    padding-bottom: 40px;
+  }
+  .padMe {
+    padding-top: 125px;
+  }
+  .dispMenu {
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -380px;
+    background: #545555;
+    width: 380px;
+    height: 100%;
+    padding-top: 125px;
+  }
+  .dispMenu li {
+    width: 100%;
+  }
+  .dispMenu li a {
+    font-size: 20px;
+    padding: 30px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
