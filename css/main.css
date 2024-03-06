@@ -134,6 +134,12 @@ main .logoIlustrativo {
   width: 120px;
   height: 120px;
 }
+main .img-proyectos {
+  height: 350px;
+  width: 650px;
+  margin: 0px 20px;
+  border-radius: 8px;
+}
 main .videoNosotros {
   width: 90%;
   height: 60vh;
