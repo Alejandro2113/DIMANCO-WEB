@@ -1,0 +1,21 @@
+//IMPORTANDO TODOS LOS ARCHIVOS .scss
+
+//variables
+@import './general/vars.scss';
+
+//Reset
+@import './general/reset.scss';
+
+//layout header
+@import './layout/header.scss';
+
+//layout footer
+@import './layout/footer.scss';
+
+//Main index
+@import './pages/index.scss';
+
+//Main about-us
+
+//Main storeGrid
+@import './pages/storeGrid.scss';

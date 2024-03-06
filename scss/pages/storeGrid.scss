@@ -1,0 +1,123 @@
+.bodyGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 80px auto 120px;
+    grid-template-areas: 
+      "head head head head"
+      "nav main main main"
+      "footer footer footer footer"
+    ;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+  
+.gridPageHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffffce;
+    grid-area: head;
+    text-decoration: none;
+    justify-self: center;
+    position: fixed;
+    color: $color-primario;
+    .list-hGrid a{
+        text-decoration: none;
+        color: $color-primario;
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0px 10px;
+        &:hover a{
+        text-decoration: none;
+        color: $color-terciarioi;
+        align-content: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 24px 15px;
+        }
+    }
+}
+
+.gridPageNav {
+    grid-area: nav;
+    justify-self: start;
+}
+
+nav {
+    .list-hGrid{ 
+        a{
+        text-decoration: none;
+        color: $color-terciarioi;
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0px 10px;
+            &:hover{
+                text-decoration: none;
+                color: $color-primario;
+                align-content: center;
+                font-size: 30px;
+                font-weight: 600;
+                margin: 24px 15px;
+            }
+        }
+    }
+}
+
+
+.gridPageMain {
+grid-area: main;
+ 
+    
+.products {
+    font-size: 22px;
+    margin: 15px;
+    padding: 5px;
+    width: 400px;
+    border-radius: 12px;
+    text-align: center;
+    color: $color-fondoN;
+    font-weight: 300;
+    background-color: rgb(102, 102, 102);
+    &:hover {
+        font-size: 22px;
+        margin: 15px;
+        padding: 5px;
+        width: 400px;
+        border-radius: 12px;
+        text-justify: center;
+        color: $color-primario;
+        font-weight: 500;
+        background-color: rgb(0, 0, 0);
+        }
+    a{
+        display:flex;
+        margin: 23px 10px 10px 5px;
+        padding: 5px 2px;
+        color: $color-terciarioi;
+        justify-content: center;
+        background-color: $color-fondoN;  
+        text-decoration: none;
+        }
+}
+    
+.cementoRegional {
+height: 400px;
+width: 380px;
+border-radius: 10px;
+margin-top: 20px; 
+}
+
+.cementoFortaleza {
+height: 400px;
+width: 310px;
+border-radius: 10px;
+margin-top: 20px;
+}
+
+}
+
+.gridPageFooter {
+background-color: $color-secundario;
+grid-area: footer;
+text-align: center;
+}
+  
