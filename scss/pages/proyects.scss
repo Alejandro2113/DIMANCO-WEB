@@ -1,6 +1,23 @@
 //MAIN PROYECTS.SCSS
 
+@mixin media-query-proyects {
+    @media screen and (max-width:980px) {
+        @content;
+    }
+}
+
 main {
+
+    .logoIlustrativo {
+        width: 100px;
+        height: 100px;
+        @include media-query-proyects(){
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+
     #iconstru {
         justify-content: space-between;
         background-image: linear-gradient(to bottom, $color-fondoN, $fondoLogosAmarillo);
@@ -15,5 +32,18 @@ main {
             }
         }
     }
+
+    .img-proyectos{
+        height: 350px;
+        width: 650px;
+        margin: 0px 20px;
+        border-radius: 8px;
+        @include media-query-proyects(){
+            height: 220px;
+            width: 390px;
+            margin: 0px 10px;
+            border-radius: 8px;
+        }
+      }
 
 }

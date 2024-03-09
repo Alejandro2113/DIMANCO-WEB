@@ -1,19 +1,37 @@
 
 main{
+
+  @mixin media-query-slides {
+    @media screen and (max-width:680px) {
+        @content;
+    }
+}
+
     #slideshow {
         text-align: center;
         overflow: hidden;
         height: 310px;
         width: 528px;
+        @include media-query-slides(){
+          width: 320px;
+          height: 190px;
+        }
         margin: 0 auto;
     
         .slide-wrapper {
-          width: 2212px;
+          width: 2112px;
+          @include media-query-slides(){
+            width: 1280px;
+          }
           -webkit-animation: slide 18s ease infinite;
           .slide {
             float: left;
             height: 310px;
             width: 528px;
+            @include media-query-slides(){
+              height: 190px;
+              width: 320px;
+            }
             .imageslider {
               width: 100%;
               height: 100%;
@@ -27,6 +45,15 @@ main{
               70% {margin-left: -1056px;}
               80% {margin-left: -1584px;}
               90% {margin-left: -1584px;}
+              @include media-query-slides(){
+                20% {margin-left: 0px;}
+                30% {margin-left: -320px;}
+                50% {margin-left: -320px;}
+                60% {margin-left: -640px;}
+                70% {margin-left: -640px;}
+                80% {margin-left: -960px;}
+                90% {margin-left: -960px;}
+              }
             }
           }
         }

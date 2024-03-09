@@ -1,3 +1,5 @@
+//Mixin for responsive
+
 .bodyGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -44,6 +46,12 @@
     justify-self: start;
 }
 
+@mixin media-query-nav {
+    @media screen and (max-width:980px) {
+        @content;
+    }
+}
+
 nav {
     .list-hGrid {
         a {
@@ -52,6 +60,9 @@ nav {
             font-size: 28px;
             font-weight: 400;
             margin: 0px 10px;
+            @include media-query-nav(){
+                font-size: 20px;
+            }
 
             &:hover {
                 text-decoration: none;
@@ -60,6 +71,9 @@ nav {
                 font-size: 30px;
                 font-weight: 600;
                 margin: 24px 15px;
+                @include media-query-nav(){
+                    font-size: 22px;
+                }
             }
         }
     }
@@ -69,6 +83,11 @@ nav {
 .gridPageMain {
     grid-area: main;
 
+    @mixin media-query-main {
+        @media screen and (max-width:1180px) {
+            @content;
+        }
+    }
 
     .products {
         font-size: 22px;
@@ -121,7 +140,21 @@ nav {
         margin-top: 20px;
     }
 
+    @include media-query-main() {
+
+        .cementoFortaleza,
+        .cementoRegional {
+            height: 180px;
+            width: 160px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+    }
+
+
 }
+
 
 .gridPageFooter {
     background-color: $color-secundario;

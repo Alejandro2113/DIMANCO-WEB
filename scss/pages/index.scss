@@ -1,6 +1,18 @@
 //MAIN INDEX
 
 main {
+  @mixin media-query-index {
+    @media screen and (max-width:580px) {
+      @content;
+    }
+  }
+
+  p {
+    @include media-query-index() {
+      text-align: center;
+    }
+
+  }
 
   .logoIlustrativo {
     width: 120px;
@@ -14,11 +26,6 @@ main {
     border-radius: 8px;
   }
 
-
-  .videoNosotros {
-    width: 90%;
-    height: 60vh;
-  }
 
   .elem {
     display: flex;
