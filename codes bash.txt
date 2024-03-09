@@ -1,1 +1,4 @@
+ALGUNAS RUTAS RAPIDAS PARA LOS CODIGOS MAS USADOS
+
+
 sass --watch scss/app.scss:css/main.css
