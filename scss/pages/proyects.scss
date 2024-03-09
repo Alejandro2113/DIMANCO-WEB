@@ -1,0 +1,19 @@
+//MAIN PROYECTS.SCSS
+
+main {
+    #iconstru {
+        justify-content: space-between;
+        background-image: linear-gradient(to bottom, $color-fondoN, $fondoLogosAmarillo);
+
+        li {
+            list-style-type: none;
+            margin: 0px 20px;
+
+            &:hover {
+                background-color: rgba(208, 8, 8, 0.554);
+                border-radius: 12px;
+            }
+        }
+    }
+
+}

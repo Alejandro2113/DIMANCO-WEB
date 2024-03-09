@@ -9,6 +9,9 @@
 //layout header
 @import './layout/header.scss';
 
+//layout Slides
+@import './layout/slides.scss';
+
 //layout footer
 @import './layout/footer.scss';
 
@@ -16,6 +19,13 @@
 @import './pages/index.scss';
 
 //Main about-us
+@import './pages/about-us.scss';
+
+//Main proyects
+@import './pages/proyects.scss';
 
 //Main storeGrid
 @import './pages/storeGrid.scss';
+
+//Main contacts
+@import './pages/contacts.scss'
