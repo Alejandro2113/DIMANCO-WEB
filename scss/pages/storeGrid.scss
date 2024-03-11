@@ -60,7 +60,8 @@ nav {
             font-size: 28px;
             font-weight: 400;
             margin: 0px 10px;
-            @include media-query-nav(){
+
+            @include media-query-nav() {
                 font-size: 20px;
             }
 
@@ -71,7 +72,8 @@ nav {
                 font-size: 30px;
                 font-weight: 600;
                 margin: 24px 15px;
-                @include media-query-nav(){
+
+                @include media-query-nav() {
                     font-size: 22px;
                 }
             }
