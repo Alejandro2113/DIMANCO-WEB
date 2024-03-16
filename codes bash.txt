@@ -2,3 +2,5 @@ ALGUNAS RUTAS RAPIDAS PARA LOS CODIGOS MAS USADOS
 
 
 sass --watch scss/app.scss:css/main.css
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
