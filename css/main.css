@@ -14,6 +14,7 @@ main h1 {
 @media screen and (max-width: 580px) {
   main h1 {
     font-size: 24px;
+    text-align: center;
   }
 }
 main h2 {
@@ -23,6 +24,7 @@ main h2 {
 @media screen and (max-width: 580px) {
   main h2 {
     font-size: 22px;
+    text-align: center;
   }
 }
 main h3 {
@@ -32,6 +34,7 @@ main h3 {
 @media screen and (max-width: 580px) {
   main h3 {
     font-size: 20px;
+    text-align: center;
   }
 }
 main h4 {
@@ -249,6 +252,11 @@ footer .foot {
   text-decoration: none;
   font-size: 14px;
 }
+@media screen and (max-width: 580px) {
+  footer .foot {
+    text-align: center;
+  }
+}
 footer .foot a {
   color: #c8b015;
   justify-content: center;
@@ -328,6 +336,14 @@ main .videoNosotros {
   width: 80%;
   height: 40dvi;
 }
+main .timup {
+  font-weight: 600;
+}
+main .imgNosotros {
+  height: 350;
+  width: 300;
+  object-fit: cover;
+}
 
 main .logoIlustrativo {
   width: 100px;
@@ -364,6 +380,9 @@ main .img-proyectos {
     margin: 0px 10px;
     border-radius: 8px;
   }
+}
+main .divisorProyectos {
+  margin: 25px 5px;
 }
 
 .bodyGrid {
@@ -496,12 +515,6 @@ nav .list-hGrid a:hover {
   text-align: center;
 }
 
-main .elem {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
 main .cont2 {
   display: flex;
   flex-direction: column;

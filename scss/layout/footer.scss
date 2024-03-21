@@ -1,5 +1,11 @@
 //FOOTER
 
+@mixin media-query-footer {
+  @media screen and (max-width:580px) {
+    @content;
+  }
+}
+
 footer {
 
   .logoheader {
@@ -21,6 +27,10 @@ footer {
     align-items: center;
     text-decoration: none;
     font-size: 14px;
+
+    @include media-query-footer() {
+      text-align: center;
+    }
   }
 
   .foot a {
@@ -32,6 +42,7 @@ footer {
     align-items: center;
     text-decoration: none;
     font-size: 18px;
+
   }
 
 }

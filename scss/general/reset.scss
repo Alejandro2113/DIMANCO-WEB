@@ -25,6 +25,7 @@ main {
 
     @include media-query-reset() {
       font-size: 24px;
+      text-align: center;
     }
 
   }
@@ -35,6 +36,7 @@ main {
 
     @include media-query-reset() {
       font-size: 22px;
+      text-align: center;
     }
 
   }
@@ -45,6 +47,7 @@ main {
 
     @include media-query-reset() {
       font-size: 20px;
+      text-align: center;
     }
 
   }
