@@ -167,9 +167,9 @@ main #slideshow .slide-wrapper {
   width: 2112px;
   -webkit-animation: slide 18s ease infinite;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 380px) {
   main #slideshow .slide-wrapper {
-    width: 1280px;
+    width: 960px;
   }
 }
 main #slideshow .slide-wrapper .slide {
@@ -177,7 +177,7 @@ main #slideshow .slide-wrapper .slide {
   height: 310px;
   width: 528px;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 380px) {
   main #slideshow .slide-wrapper .slide {
     height: 190px;
     width: 320px;
@@ -209,7 +209,7 @@ main #slideshow .slide-wrapper .slide .imageslider {
   90% {
     margin-left: -1584px;
   }
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 380px) {
     20% {
       margin-left: 0px;
     }
@@ -518,7 +518,7 @@ nav .list-hGrid a:hover {
 main .cont2 {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80dvw;
   justify-content: center;
   align-items: center;
   margin: 20px 20px;
@@ -539,10 +539,20 @@ main .img-cont {
   width: 600px;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 480px) {
+  main .img-cont {
+    width: 350px;
+  }
+}
 main .cont {
   flex-direction: column;
   width: 600px;
   flex-wrap: wrap;
+}
+@media screen and (max-width: 480px) {
+  main .cont {
+    width: 350px;
+  }
 }
 main .formu {
   margin: 0px 30px 10px 30px;

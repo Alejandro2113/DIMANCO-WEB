@@ -6,6 +6,12 @@ main {
     }
   }
 
+  @mixin media-query-slides2 {
+    @media screen and (max-width:380px) {
+      @content;
+    }
+  }
+
   #slideshow {
     text-align: center;
     overflow: hidden;
@@ -22,8 +28,8 @@ main {
     .slide-wrapper {
       width: 2112px;
 
-      @include media-query-slides() {
-        width: 1280px;
+      @include media-query-slides2() {
+        width: 960px;
       }
 
       -webkit-animation: slide 18s ease infinite;
@@ -33,7 +39,7 @@ main {
         height: 310px;
         width: 528px;
 
-        @include media-query-slides() {
+        @include media-query-slides2() {
           height: 190px;
           width: 320px;
         }
@@ -73,7 +79,7 @@ main {
           margin-left: -1584px;
         }
 
-        @include media-query-slides() {
+        @include media-query-slides2() {
           20% {
             margin-left: 0px;
           }
