@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Alejandro2113/3erEntrega/issues"
   },
-  "homepage": "https://github.com/Alejandro2113/3erEntrega#readme"
+  "homepage": "https://github.com/Alejandro2113/3erEntrega#readme",
+  "dependencies": {
+    "@vercel/analytics": "^1.2.2"
+  }
 }
