@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String
+  lastname  String
+  password  String
+  createdAt DateTime  @default(now())
+  proyectos Proyecto[] // Relación con los proyectos que ha subido el usuario
+}
+
+model Proyecto {
+  id          Int       @id @default(autoincrement())
+  titulo      String
+  subtitulo   String?   // Nuevo campo para el subtítulo
+  descripcion String
+  imagen      String?   // URL de la imagen
+  fechaInicio DateTime
+  fechaFinal  DateTime
+  featured    Boolean   @default(false) // Campo para proyecto destacado
+  createdAt   DateTime  @default(now())
+  userId      Int       // Relación con el modelo User
+  usuario     User      @relation(fields: [userId], references: [id]) // Relación con el usuario
+}
