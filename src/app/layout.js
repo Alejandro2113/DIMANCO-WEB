@@ -18,10 +18,16 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "Dimanco S.A DE C.V",
-  description: "Constructora DIMANCO",
-  icon: "/favicon.ico",
-
+  description: "Empresa constructora, construcción y topografía de alta calidad. Transformamos terrenos en maravillas arquitectónicas. ¡Construye con nosotros!",
+  icons: "/favicon.ico",
+  keywords: [
+    "El Salvador", "Salvadoreña", "Constructora", "construcción", "proyectos", 
+    "topografía", "supervisión", "maquinaria", "equipos de construcción",
+    "materiales", "casa", "edificios", "construcción de casas", "planos", 
+    "diseño", "arquitectura", "estructura", "revisiones", "terrenos"
+  ],
 };
+
 
 export default function RootLayout({ children }) {
   return (
