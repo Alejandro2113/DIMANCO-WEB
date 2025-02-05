@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Pencil, Trash2, Plus, X, Check, ChevronDown } from 'lucide-react';
+import { Pencil, Trash2, Plus, X, Check, ChevronDown, Search } from 'lucide-react';
 
 export default function ProjectManager() {
   const [name, setName] = useState('');
@@ -12,7 +12,11 @@ export default function ProjectManager() {
   const [editingProject, setEditingProject] = useState(null);
   const [error, setError] = useState('');
   const router = useRouter();
-  
+  const formRef = useRef(null);
+  // Nuevos estados para la búsqueda
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
   const emptyProject = {
     titulo: '',
     subtitulo: '',
@@ -26,7 +30,15 @@ export default function ProjectManager() {
 
   const [project, setProject] = useState(emptyProject);
 
-  // All the existing fetch and handler functions remain the same
+  // Efecto para filtrar proyectos
+  useEffect(() => {
+    const filtered = projects.filter(project => 
+      project.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.id.toString().includes(searchTerm)
+    );
+    setFilteredProjects(filtered);
+  }, [searchTerm, projects]);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -98,10 +110,10 @@ export default function ProjectManager() {
 
     try {
       const token = localStorage.getItem('token');
-      const url = editingProject 
+      const url = editingProject
         ? `/pages/api/projects/${editingProject.id}`
         : '/pages/api/projects';
-      
+
       const method = editingProject ? 'PUT' : 'POST';
 
       const res = await fetch(url, {
@@ -136,6 +148,15 @@ export default function ProjectManager() {
     });
     setEditingProject(proj);
     setIsFormOpen(true);
+
+    setTimeout(() => {
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
   };
 
   const handleDelete = async (id) => {
@@ -162,18 +183,18 @@ export default function ProjectManager() {
 
   const handleChange = async (e) => {
     const { name, value, type, checked, files } = e.target;
-    
+
     if (type === 'file' && files[0]) {
       const file = files[0];
       const reader = new FileReader();
-      
+
       reader.onloadend = () => {
         setProject(prev => ({
           ...prev,
           imagen: reader.result
         }));
       };
-      
+
       reader.readAsDataURL(file);
     } else {
       setProject(prev => ({
@@ -191,14 +212,19 @@ export default function ProjectManager() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 md:p-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section - Made responsive */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 w-full sm:w-auto">
             Welcome {name}
           </h1>
           <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             <button
-              onClick={() => setIsFormOpen(!isFormOpen)}
+              onClick={() => {
+                setIsFormOpen(!isFormOpen);
+                if (!isFormOpen) {
+                  setProject(emptyProject);
+                  setEditingProject(null);
+                }
+              }}
               className="flex items-center justify-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors w-full sm:w-auto"
             >
               {isFormOpen ? <X className="w-5 h-5 mr-2" /> : <Plus className="w-5 h-5 mr-2" />}
@@ -225,11 +251,26 @@ export default function ProjectManager() {
           </div>
         )}
 
+        {/* Barra de búsqueda */}
+        <div className="mb-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black h-5 w-5" />
+            <input
+              type="text"
+              placeholder="Buscar por título o ID..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 gap-8">
-          {/* Form Section - Made responsive */}
           {isFormOpen && (
-            <div className="w-full">
+            <div ref={formRef} className="w-full">
               <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
+                {/* El contenido del formulario se mantiene igual */}
+                {/* ... código del formulario ... */}
                 <h2 className="text-black text-xl font-semibold mb-4">
                   {editingProject ? 'Editar Proyecto' : 'Nuevo Proyecto'}
                 </h2>
@@ -349,11 +390,10 @@ export default function ProjectManager() {
             </div>
           )}
 
-          {/* Projects List Section - Made responsive */}
           <div className="w-full">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="divide-y divide-gray-200">
-                {projects.map((proj) => (
+                {filteredProjects.map((proj) => (
                   <div key={proj.id} className="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
                     <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
                       <div className="w-full sm:w-24 h-48 sm:h-24 flex-shrink-0">
@@ -380,7 +420,8 @@ export default function ProjectManager() {
                               className="p-2 text-gray-600 hover:text-red-600 transition-colors"
                             >
                               <Trash2 className="w-5 h-5" />
-                            </button></div>
+                            </button>
+                          </div>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">{proj.subtitulo}</p>
                         <p className="mt-2 text-sm text-gray-600">{proj.descripcion}</p>
@@ -409,9 +450,9 @@ export default function ProjectManager() {
                     </div>
                   </div>
                 ))}
-                {projects.length === 0 && (
+                {filteredProjects.length === 0 && (
                   <div className="p-4 sm:p-6 text-center text-gray-500">
-                    No hay proyectos disponibles
+                    {projects.length === 0 ? "No hay proyectos disponibles" : "No se encontraron proyectos"}
                   </div>
                 )}
               </div>

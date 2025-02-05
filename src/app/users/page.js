@@ -97,6 +97,15 @@ const UserDashboard = () => {
     router.push('/login');
   };
 
+  const toggleForm = () => {
+    if (isFormOpen) {
+      // Reset both newUser and editingUser when closing the form
+      setNewUser(emptyUser);
+      setEditingUser(null);
+    }
+    setIsFormOpen(!isFormOpen);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
@@ -108,7 +117,7 @@ const UserDashboard = () => {
             </h1>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
               <button
-                onClick={() => setIsFormOpen(!isFormOpen)}
+                onClick={toggleForm}
                 className="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-200 font-medium"
               >
                 {isFormOpen ? <X className="w-5 h-5 mr-2" /> : <Plus className="w-5 h-5 mr-2" />}
@@ -130,6 +139,8 @@ const UserDashboard = () => {
           </div>
         </div>
 
+        {/* Rest of the component remains the same... */}
+        {/* Error message section */}
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
             <div className="flex">

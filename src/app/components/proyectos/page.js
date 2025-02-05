@@ -20,14 +20,19 @@ const Proyectos = () => {
       try {
         const response = await fetch('/pages/api/projects');
         const data = await response.json();
-        setProyectos(data.projects);
+        
+        // Filtrar solo proyectos destacados en el frontend
+        const proyectosDestacados = data.projects.filter(proyecto => proyecto.featured);
+  
+        setProyectos(proyectosDestacados);
       } catch (error) {
         console.error('Error al obtener los proyectos:', error);
       }
     };
-
+  
     fetchProyectos();
   }, []);
+  
 
   const formatDate = (date) => {
     const d = new Date(date);
