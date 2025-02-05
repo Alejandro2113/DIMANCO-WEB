@@ -19,9 +19,18 @@ export async function PUT(req, { params }) {
       return new Response(JSON.stringify({ message: 'Faltan datos' }), { status: 400 });
     }
 
+    // Dynamically import bcryptjs
+    const bcrypt = await import('bcryptjs');
+
+    // Hash the password before updating
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const updatedUser = await prisma.user.update({
       where: { id: Number(params.id) },
-      data: { email, password }, // Asegúrate de cifrar el password antes de actualizarlo
+      data: { 
+        email, 
+        password: hashedPassword 
+      },
     });
 
     return new Response(JSON.stringify({ updatedUser }), { status: 200 });

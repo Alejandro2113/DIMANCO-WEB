@@ -12,6 +12,7 @@ export async function GET(req) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
     const users = await prisma.user.findMany({
       select: {
         id: true,
@@ -43,8 +44,19 @@ export async function POST(req) {
       return new Response(JSON.stringify({ message: 'Faltan datos' }), { status: 400 });
     }
 
+    // Dynamically import bcryptjs
+    const bcrypt = await import('bcryptjs');
+
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = await prisma.user.create({
-      data: { email, name, lastname, password },
+      data: { 
+        email, 
+        name, 
+        lastname, 
+        password: hashedPassword 
+      },
     });
 
     return new Response(JSON.stringify({ user }), { status: 201 });
@@ -63,16 +75,26 @@ export async function PUT(req) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const { id } = req.params;
-    const { email, name, lastname, password } = await req.json();
+    const { id, email, name, lastname, password } = await req.json();
 
     if (!email || !password || !name || !lastname) {
       return new Response(JSON.stringify({ message: 'Faltan datos' }), { status: 400 });
     }
 
+    // Dynamically import bcryptjs
+    const bcrypt = await import('bcryptjs');
+
+    // Hash the password before updating
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const updatedUser = await prisma.user.update({
       where: { id: Number(id) },
-      data: { email, name, lastname, password },
+      data: { 
+        email, 
+        name, 
+        lastname, 
+        password: hashedPassword 
+      },
     });
 
     return new Response(JSON.stringify({ updatedUser }), { status: 200 });
@@ -91,7 +113,7 @@ export async function DELETE(req) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const { id } = req.params;
+    const { id } = await req.json();  // Deberías pasar el `id` en el cuerpo de la solicitud
 
     await prisma.user.delete({
       where: { id: Number(id) },

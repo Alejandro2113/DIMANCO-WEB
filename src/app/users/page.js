@@ -15,7 +15,6 @@ const UserDashboard = () => {
 
   const emptyUser = { email: '', name: '', lastname: '', password: '' };
 
-  // All fetch and handler functions remain the same
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -65,7 +64,6 @@ const UserDashboard = () => {
   const handleEditUser = (user) => {
     setEditingUser(user);
     setIsFormOpen(true);
-    // Scroll to form when editing
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -99,7 +97,6 @@ const UserDashboard = () => {
 
   const toggleForm = () => {
     if (isFormOpen) {
-      // Reset both newUser and editingUser when closing the form
       setNewUser(emptyUser);
       setEditingUser(null);
     }
@@ -112,9 +109,7 @@ const UserDashboard = () => {
         {/* Enhanced Header Section */}
         <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Panel de Usuarios
-            </h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Panel de Usuarios</h1>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={toggleForm}
@@ -139,7 +134,6 @@ const UserDashboard = () => {
           </div>
         </div>
 
-        {/* Rest of the component remains the same... */}
         {/* Error message section */}
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
@@ -164,9 +158,7 @@ const UserDashboard = () => {
             </div>
             <form onSubmit={handleCreateOrUpdateUser} className="text-black p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                 <input
                   id="email"
                   type="email"
@@ -178,9 +170,7 @@ const UserDashboard = () => {
                 />
               </div>
               <div className="space-y-1.5">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Nombre
-                </label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
                 <input
                   id="name"
                   type="text"
@@ -192,9 +182,7 @@ const UserDashboard = () => {
                 />
               </div>
               <div className="space-y-1.5">
-                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
-                  Apellido
-                </label>
+                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">Apellido</label>
                 <input
                   id="lastname"
                   type="text"
@@ -206,9 +194,7 @@ const UserDashboard = () => {
                 />
               </div>
               <div className="space-y-1.5">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Contraseña
-                </label>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Contraseña</label>
                 <input
                   id="password"
                   type="password"
@@ -234,9 +220,7 @@ const UserDashboard = () => {
         {/* Enhanced Users List Section */}
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 sm:p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-800">
-              Lista de Usuarios
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800">Lista de Usuarios</h2>
           </div>
           {users.length === 0 ? (
             <div className="p-4 sm:p-6 text-center text-gray-500">
@@ -252,24 +236,20 @@ const UserDashboard = () => {
                         <h3 className="text-base sm:text-lg font-medium text-gray-900 truncate">
                           {user.name} {user.lastname}
                         </h3>
-                        <p className="mt-1 text-sm text-gray-500 truncate">
-                          {user.email}
-                        </p>
+                        <p className="mt-1 text-sm text-gray-500 truncate">{user.email}</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => handleEditUser(user)}
-                          className="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200"
+                          className="inline-flex items-center justify-center text-indigo-600 hover:text-indigo-700"
                         >
-                          <Pencil className="w-4 h-4" />
-                          <span className="ml-2 hidden sm:inline">Editar</span>
+                          <Pencil className="w-5 h-5" />
                         </button>
                         <button
                           onClick={() => handleDeleteUser(user.id)}
-                          className="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200"
+                          className="inline-flex items-center justify-center text-red-600 hover:text-red-700"
                         >
-                          <Trash2 className="w-4 h-4" />
-                          <span className="ml-2 hidden sm:inline">Eliminar</span>
+                          <Trash2 className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
