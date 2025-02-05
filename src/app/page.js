@@ -18,7 +18,7 @@ export default function Home() {
     { icon: Map, description: "Diseño y elaboración de planos" },
     { icon: Hammer, description: "Construcción en general" },
     { icon: HomeIcon, description: "Diseño de lotificaciones" },
-    { icon: Ruler, description: "Mediciones de terrenos" },
+    { icon: Ruler, description: "Medicion de terrenos" },
     { icon: DollarSign, description: "Valuación de propiedades" },
     { icon: HardHat, description: "Supervisión de obra civil" },
   ];
